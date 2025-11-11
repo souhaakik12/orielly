@@ -5,28 +5,27 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/YourUsername/YourRepository.git'
+                git branch: 'master',
+                    url: 'https://github.com/souhaakik12/orielly.git',
+                    credentialsId: 'github-token'
             }
         }
 
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'echo "Build successful!"'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'echo "All tests passed!"'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the project...'
-                sh 'echo "Deployment complete!"'
+                echo 'Deploying project...'
             }
         }
     }
@@ -36,7 +35,7 @@ pipeline {
             echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo '❌ Pipeline failed. Check the logs for errors.'
+            echo '❌ Pipeline failed. Check logs for details.'
         }
     }
 }
